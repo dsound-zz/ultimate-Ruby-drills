@@ -6,7 +6,7 @@
 if [ -z "$1" ]; then
   echo "Error: Please provide a drill name"
   echo "Usage: ./scripts/load-drill.sh <drill-name>"
-  echo "Example: ./scripts/load-drill.sh palindrome"
+      echo "Example: ./scripts/load-drill.sh 04-palindrome"
   exit 1
 fi
 
