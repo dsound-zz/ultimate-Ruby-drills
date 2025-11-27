@@ -1,24 +1,11 @@
-# Reverse String
+# Unique Values
 #
-# Write a function that takes a string and returns it reversed.
+# Write a function that takes an array and returns an array containing only unique values.
+# The order should be preserved based on first occurrence.
 
-def reverse_string(str)
+def unique_values(arr)
   # TODO: Implement this function
-  return str if str.nil? || str.size < 2 
-
-  arr = str.chars
-  left  = 0
-  right = arr.length - 1
-
-  while left < right
-    arr[left], arr[right] = arr[right], arr[left]
-    left += 1
-    right -= 1
-  end
-
-  arr.join
+  seen = {}
+  arr.select { |value| !seen.key?(value) && (seen[value] = true) }
 end
-
-
-
 
