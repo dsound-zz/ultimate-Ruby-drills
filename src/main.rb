@@ -4,7 +4,7 @@
 
 def reverse_string(str)
   # TODO: Implement this function
-  return str if !str || str.size == 1 
+  return str if str.nil? || str.size < 2 
 
   arr = str.chars
   left  = 0
