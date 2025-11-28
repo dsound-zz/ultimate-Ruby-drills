@@ -1,44 +1,48 @@
 require_relative 'main'
 
-RSpec.describe 'palindrome' do
-  it 'identifies simple palindrome' do
-    expect(palindrome('racecar')).to be true
+RSpec.describe 'max_occurrence' do
+  it 'finds most frequent character in string' do
+    expect(max_occurrence('hello')).to eq('l')
   end
 
-  it 'identifies non-palindrome' do
-    expect(palindrome('hello')).to be false
+  it 'finds most frequent character with tie (returns first)' do
+    expect(max_occurrence('hello world')).to eq('l')
   end
 
-  it 'handles single character' do
-    expect(palindrome('a')).to be true
+  it 'handles single character string' do
+    expect(max_occurrence('a')).to eq('a')
   end
 
   it 'handles empty string' do
-    expect(palindrome('')).to be true
+    expect(max_occurrence('')).to eq('')
   end
 
-  it 'handles palindrome with different cases' do
-    expect(palindrome('Racecar')).to be true
+  it 'handles string with all same characters' do
+    expect(max_occurrence('aaaa')).to eq('a')
   end
 
-  it 'handles palindrome with spaces' do
-    expect(palindrome('race car')).to be true
+  it 'handles string with numbers' do
+    expect(max_occurrence('112233')).to eq('1')
   end
 
-  it 'handles palindrome with punctuation' do
-    expect(palindrome('A man a plan a canal Panama')).to be true
+  it 'handles array of numbers' do
+    expect(max_occurrence([1, 2, 2, 3, 3, 3])).to eq(3)
   end
 
-  it 'handles numeric palindrome' do
-    expect(palindrome('12321')).to be true
+  it 'handles array of strings' do
+    expect(max_occurrence(['a', 'b', 'a', 'c', 'a'])).to eq('a')
   end
 
-  it 'handles non-palindrome with spaces' do
-    expect(palindrome('hello world')).to be false
+  it 'handles array with tie (returns first)' do
+    expect(max_occurrence([1, 2, 2, 1])).to eq(1)
   end
 
-  it 'handles palindrome with special characters' do
-    expect(palindrome("Madam, I'm Adam")).to be true
+  it 'handles empty array' do
+    expect(max_occurrence([])).to be_nil
+  end
+
+  it 'handles string with spaces' do
+    expect(max_occurrence('hello world')).to eq('l')
   end
 end
 

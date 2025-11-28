@@ -34,7 +34,7 @@ RSpec.describe 'max_occurrence' do
   end
 
   it 'handles array with tie (returns first)' do
-    expect(max_occurrence([1, 2, 2, 1, 1])).to eq(1)
+    expect(max_occurrence([1, 2, 2, 1])).to eq(1)
   end
 
   it 'handles empty array' do

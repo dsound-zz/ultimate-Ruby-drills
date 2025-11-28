@@ -1,21 +1,29 @@
-# Palindrome
+# Max Occurrence
 #
-# Write a function that checks if a string is a palindrome.
-# A palindrome is a word, phrase, number, or other sequence of characters
-# that reads the same forward and backward (ignoring case, spaces, and punctuation).
+# Write a function that finds the character (or element) that appears most frequently
+# in a string (or array). If there's a tie, return the one that appears first.
 
-def palindrome(str)
+def max_occurrence(input)
   # TODO: Implement this function
-  cleanedStr = str.downcase.gsub(/[^a-z0-9]/, "")
-  left = 0
-  right = cleanedStr.size - 1
+  return '' if input == ''
 
-  while left < right 
-    return false if cleanedStr[left] != cleanedStr[right]
-    left += 1
-    right -= 1
+  inputAry = input.is_a?(String) ? input.chars : input
+  return nil if inputAry.empty? 
+
+  countHash = Hash.new(0)
+  maxCount = 0
+
+  inputAry.each do |ele|
+    countHash[ele] += 1
+
+    maxCount = [maxCount, countHash[ele]].max
   end
 
-  true
+  inputAry.each do |ele|
+    return ele if countHash[ele] == maxCount
+  end
+
+
+  nil
 end
 
