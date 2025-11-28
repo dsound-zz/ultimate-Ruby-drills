@@ -1,11 +1,21 @@
-# Unique Values
+# Array Chunk
 #
-# Write a function that takes an array and returns an array containing only unique values.
-# The order should be preserved based on first occurrence.
+# Write a function that splits an array into chunks of a specified size.
+# The last chunk may be smaller than the specified size if the array length
+# is not evenly divisible by the chunk size.
 
-def unique_values(arr)
+def array_chunk(arr, size)
   # TODO: Implement this function
-  seen = {}
-  arr.select { |value| !seen.key?(value) && (seen[value] = true) }
+  return [] if arr.empty?
+
+  result = []
+  i = 0
+
+  while i < arr.length 
+    result << arr[i, size]
+    i += size
+  end
+
+  result 
 end
 

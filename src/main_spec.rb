@@ -1,36 +1,36 @@
 require_relative 'main'
 
-RSpec.describe 'unique_values' do
-  it 'removes duplicates from array of numbers' do
-    expect(unique_values([1, 2, 2, 3, 3, 3, 4])).to eq([1, 2, 3, 4])
+RSpec.describe 'array_chunk' do
+  it 'splits array into chunks of specified size' do
+    expect(array_chunk([1, 2, 3, 4, 5], 2)).to eq([[1, 2], [3, 4], [5]])
   end
 
-  it 'removes duplicates from array of strings' do
-    expect(unique_values(['a', 'b', 'a', 'c', 'b'])).to eq(['a', 'b', 'c'])
+  it 'splits array into chunks of size 3' do
+    expect(array_chunk([1, 2, 3, 4, 5, 6, 7], 3)).to eq([[1, 2, 3], [4, 5, 6], [7]])
   end
 
-  it 'preserves order of first occurrence' do
-    expect(unique_values([3, 1, 3, 2, 1])).to eq([3, 1, 2])
+  it 'handles array evenly divisible by chunk size' do
+    expect(array_chunk([1, 2, 3, 4], 2)).to eq([[1, 2], [3, 4]])
+  end
+
+  it 'handles chunk size larger than array length' do
+    expect(array_chunk([1, 2, 3], 5)).to eq([[1, 2, 3]])
   end
 
   it 'handles empty array' do
-    expect(unique_values([])).to eq([])
+    expect(array_chunk([], 2)).to eq([])
   end
 
-  it 'handles array with all unique values' do
-    expect(unique_values([1, 2, 3, 4, 5])).to eq([1, 2, 3, 4, 5])
+  it 'handles chunk size of 1' do
+    expect(array_chunk([1, 2, 3], 1)).to eq([[1], [2], [3]])
   end
 
-  it 'handles array with all same values' do
-    expect(unique_values([1, 1, 1, 1])).to eq([1])
+  it 'handles string array' do
+    expect(array_chunk(['a', 'b', 'c', 'd'], 2)).to eq([['a', 'b'], ['c', 'd']])
   end
 
-  it 'handles mixed types' do
-    expect(unique_values([1, 'a', 1, 'b', 'a'])).to eq([1, 'a', 'b'])
-  end
-
-  it 'handles array with nil' do
-    expect(unique_values([nil, 1, nil, 2])).to eq([nil, 1, 2])
+  it 'handles single element array' do
+    expect(array_chunk([1], 2)).to eq([[1]])
   end
 end
 
