@@ -1,21 +1,21 @@
-# Array Chunk
+# Palindrome
 #
-# Write a function that splits an array into chunks of a specified size.
-# The last chunk may be smaller than the specified size if the array length
-# is not evenly divisible by the chunk size.
+# Write a function that checks if a string is a palindrome.
+# A palindrome is a word, phrase, number, or other sequence of characters
+# that reads the same forward and backward (ignoring case, spaces, and punctuation).
 
-def array_chunk(arr, size)
+def palindrome(str)
   # TODO: Implement this function
-  return [] if arr.empty?
+  cleanedStr = str.downcase.gsub(/[^a-z0-9]/, "")
+  left = 0
+  right = cleanedStr.size - 1
 
-  result = []
-  i = 0
-
-  while i < arr.length 
-    result << arr[i, size]
-    i += size
+  while left < right 
+    return false if cleanedStr[left] != cleanedStr[right]
+    left += 1
+    right -= 1
   end
 
-  result 
+  true
 end
 
